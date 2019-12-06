@@ -1,0 +1,4 @@
+/cygdrive/d/Projects/lab-02-cache/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/cygdrive/d/Projects/lab-02-cache/cmake-build-debug/CMakeFiles/Runner.dir
+/cygdrive/d/Projects/lab-02-cache/cmake-build-debug/CMakeFiles/edit_cache.dir
+/cygdrive/d/Projects/lab-02-cache/cmake-build-debug/CMakeFiles/main.dir

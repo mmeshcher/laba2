@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/Runner.hpp
+vector
+-
+iostream
+-
+chrono
+-
+
+/cygdrive/d/Projects/lab-02-cache/sources/Runner.cpp
+Runner.hpp
+-
+

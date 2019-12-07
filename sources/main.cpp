@@ -95,7 +95,7 @@ unsigned __int64 RandomPass(int* begin, int* end, int size, int count)
 void StartLoop(double size, int count, int type)
 {
     srand(time(0));
-    int buf_len = (int) (MB * size / 4);
+    int buf_len = static_cast<int>(MB * size / 4);
     int* buf = new int[buf_len];
     for (int i = 0; i < buf_len; i++) buf[i] = rand_r();
     for (int i = 0; i < buf_len; i++) {
@@ -104,13 +104,13 @@ void StartLoop(double size, int count, int type)
     unsigned __int64 avg = 0;
     switch (type) {
         case Direct:
-            avg = DirectPass(buf, buf + buf_len, buf_len,count);
+            avg = DirectPass(buf, buf + buf_len, buf_len, count);
             break;
         case Back:
-            avg = BackPass(buf, buf + buf_len, buf_len,count);
+            avg = BackPass(buf, buf + buf_len, buf_len, count);
             break;
         case Random:
-            avg = RandomPass(buf, buf + buf_len, buf_len,count);
+            avg = RandomPass(buf, buf + buf_len, buf_len, count);
             break;
         default:
             avg = 0;

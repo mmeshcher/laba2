@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/cygdrive/d/Projects/lab-02-cache/sources/Runner.cpp" "/cygdrive/d/Projects/lab-02-cache/cmake-build-debug/CMakeFiles/Runner.dir/sources/Runner.cpp.o"
+  "/cygdrive/c/Users/Xiaomi/Desktop/labaC++2/sources/Runner.cpp" "/cygdrive/c/Users/Xiaomi/Desktop/labaC++2/cmake-build-debug/CMakeFiles/Runner.dir/sources/Runner.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

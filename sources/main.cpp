@@ -4,9 +4,9 @@
 #include <chrono>
 #include <cstdlib>
 #include <ctime>
+#include <stdint.h>
 
 #define MB 1024 * 1024
-#define ll long long
 
 enum Type
 {
@@ -34,10 +34,10 @@ const char* ConvertType(int type)
     }
 }
 
-ll DirectPass(int* begin, int* end, int size, int count)
+unsigned __int64 DirectPass(int* begin, int* end, int size, int count)
 {
     std::chrono::time_point<std::chrono::system_clock> start, stop;
-    ll avg = 0;
+    unsigned __int64 avg = 0;
     for (int k = 0; k < count; k++){
         start = std::chrono::system_clock::now();
         for (auto i = begin; i != end; i++)
@@ -52,10 +52,10 @@ ll DirectPass(int* begin, int* end, int size, int count)
     return avg;
 }
 
-ll BackPass(int* begin, int* end, int size, int count)
+unsigned __int64 BackPass(int* begin, int* end, int size, int count)
 {
     std::chrono::time_point<std::chrono::system_clock> start, stop;
-    ll avg = 0;
+    unsigned __int64 avg = 0;
     for (int k = 0; k < count; k++){
         start = std::chrono::system_clock::now();
         for (auto i = end - 1; i != begin; i--)
@@ -70,14 +70,14 @@ ll BackPass(int* begin, int* end, int size, int count)
     return avg;
 }
 
-ll RandomPass(int* begin, int* end, int size, int count)
+unsigned __int64 RandomPass(int* begin, int* end, int size, int count)
 {
     int* array = new int[size];
     for(int i = 0; i < size; i++) array[i] = i;
     for(int i = 0; i < size; i++) std::swap(array[i], array[rand() % size]);
     
     std::chrono::time_point<std::chrono::system_clock> start, stop;
-    ll avg = 0;
+    unsigned __int64 avg = 0;
     
     for (int k = 0; k < count; k++){
         start = std::chrono::system_clock::now();
@@ -101,7 +101,7 @@ void StartLoop(double size, int count, int type)
     for (int i = 0; i < buf_len; i++) {
         buf[i] = buf[i];
     }
-    ll avg = 0;
+    unsigned __int64 avg = 0;
     switch (type) {
         case Direct:
             avg = DirectPass(buf, buf + buf_len, buf_len ,count);

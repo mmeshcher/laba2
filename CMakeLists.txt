@@ -29,19 +29,15 @@ string(APPEND CMAKE_CXX_FLAGS " -Wshadow -Wnon-virtual-dtor")
 hunter_add_package(GTest)
 find_package(GTest CONFIG REQUIRED)
 
-add_library(Runner STATIC
-        ${CMAKE_CURRENT_SOURCE_DIR}/sources/Runner.cpp)
+
 
 add_executable(main
         ${CMAKE_CURRENT_SOURCE_DIR}/sources/main.cpp
         )
 
-target_include_directories(Runner PUBLIC
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-        $<INSTALL_INTERFACE:include>
-        )
 
-target_link_libraries(main Runner)
+
+
 
 
 

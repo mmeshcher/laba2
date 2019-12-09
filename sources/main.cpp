@@ -6,6 +6,7 @@
 #include <ctime>
 #include <stdint.h>
 #include <stdlib.h>
+#include <vector>
 
 #define MB 1024 * 1024
 

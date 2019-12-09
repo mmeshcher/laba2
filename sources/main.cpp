@@ -130,8 +130,7 @@ int main() {
     int i;
     std :: cout << "Введите количество уровней кэша ";
     std :: cin >> i;
-    const int t = i+2;
-    std :: vector<double>cache_size(t);
+    std :: vector<double>cache_size(i + 2);
     for (int k=1; k <= i; k++){
         std :: cout <<"№ " << k << "размер уровня равен = ";
         std :: cin >> cache_size[k];

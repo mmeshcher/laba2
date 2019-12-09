@@ -9,7 +9,7 @@
 
 #define MB 1024 * 1024
 
-static unsigned int seed = 567898;
+static unsigned int seed;
 
 enum Type
 {
@@ -126,22 +126,26 @@ void StartLoop(double size, int count, int type)
 
 
 int main() {
-    int cycles_count = 5;
-    double cache_size[] = { 0.5, 2, 4, 8, 12 };
+    std :: cout << "Введите количество уровней кэша ";
+    std :: cin >> int i;
+    const int t = i+2;
+    std :: vector<double>cache_size(t);
+    for (int k=1; k <= i; k++){
+        std :: cout <<"№ " << k << "размер уровня равен = ";
+        std :: cin >> cache_size[k];
+    }
+    cache_size[0] = 0.5*cache_size[1];
+    cache_size[i+1] = 1.5*cache_size[i];
+    int cycles_count = i+2;
     for (int type = Direct; type != Unknown; type++)
     {
-        std::cout << ConvertType(type) << '\n';
-        std::cout << "======================" << '\n';
-        StartLoop(cache_size[0], cycles_count, type);
-        std::cout << "======================" << '\n';
-        StartLoop(cache_size[1], cycles_count, type);
-        std::cout << "======================" << '\n';
-        StartLoop(cache_size[2], cycles_count, type);
-        std::cout << "======================" << '\n';
-        StartLoop(cache_size[3], cycles_count, type);
-        std::cout << "======================" << '\n';
-        StartLoop(cache_size[4], cycles_count, type);
-        std::cout << "======================" << '\n';
+        std :: cout << ConvertType(type) << '\n';
+        std :: cout << "======================" << '\n';
+        for (int k = 0; k < i+2; k++)
+        {
+            StartLoop(cache_size[k], cycles_count, type);
+            std :: cout << "======================" << '\n';
+        }
     }
     return 0;
 }

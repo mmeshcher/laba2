@@ -127,7 +127,7 @@ void StartLoop(double size, int count, int type)
 
 
 int main() {
-	int i;
+    int i;
     std :: cout << "Введите количество уровней кэша ";
     std :: cin >> i;
     const int t = i+2;

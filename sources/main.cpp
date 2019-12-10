@@ -5,8 +5,6 @@
 #include <cstdlib>
 #include <ctime>
 #include <stdint.h>
-#include <stdlib.h>
-#include <vector>
 
 #define MB 1024 * 1024
 
@@ -130,7 +128,7 @@ int main() {
     int i;
     std :: cout << "Введите количество уровней кэша ";
     std :: cin >> i;
-    std :: vector<double>cache_size(i + 2);
+    double *cache_size = new double[i+2];
     for (int k=1; k <= i; k++){
         std :: cout <<"№ " << k << "размер уровня равен = ";
         std :: cin >> cache_size[k];
@@ -148,5 +146,6 @@ int main() {
             std :: cout << "======================" << '\n';
         }
     }
+    delete [] cache_size;
     return 0;
 }

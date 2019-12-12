@@ -40,14 +40,14 @@ __uint64_t DirectPass(int* begin, int* end, int count)
 {
     std::chrono::time_point<std::chrono::system_clock> start, stop;
     __uint64_t avg = 0;
-    for (int k = 0; k < count; k++){
+    for (int k = 0; k < count; ++k){
         start = std::chrono::system_clock::now();
-        for (auto i = begin; i != end; i++)
+        for (auto i = begin; i != end; ++i)
         {
             if (*i < 0) std::cout << i;
         }
         stop = std::chrono::system_clock::now();
-        avg += std::chrono::duration_cast<std::chrono::microseconds>
+        avg += std::chrono::duration_cast<std::chrono::milliseconds>
         (stop-start).count();
     }
     avg /= count;
@@ -58,14 +58,14 @@ __uint64_t BackPass(int* begin, int* end, int count)
 {
     std::chrono::time_point<std::chrono::system_clock> start, stop;
     __uint64_t avg = 0;
-    for (int k = 0; k < count; k++){
+    for (int k = 0; k < count; ++k){
         start = std::chrono::system_clock::now();
-        for (auto i = end - 1; i != begin; i--)
+        for (auto i = end - 1; i != begin; --i)
         {
             if (*i < 0) std::cout << i;
         }
         stop = std::chrono::system_clock::now();
-        avg += std::chrono::duration_cast<std::chrono::microseconds>
+        avg += std::chrono::duration_cast<std::chrono::milliseconds>
         (stop-start).count();
     }
     avg /= count;
@@ -75,18 +75,18 @@ __uint64_t BackPass(int* begin, int* end, int count)
 __uint64_t RandomPass(int* begin, int size, int count)
 {
     int* array = new int[size];
-    for (int i = 0; i < size; i++) array[i] = i;
-    for (int i = 0; i < size; i++) std::swap(array[i], array[rand() % size]);
+    for (int i = 0; i < size; ++i) array[i] = i;
+    for (int i = 0; i < size; ++i) std::swap(array[i], array[rand() % size]);
     std::chrono::time_point<std::chrono::system_clock> start, stop;
     __uint64_t avg = 0;
-    for (int k = 0; k < count; k++){
+    for (int k = 0; k < count; ++k){
         start = std::chrono::system_clock::now();
-        for (auto i = 0; i < size; i++)
+        for (auto i = 0; i < size; ++i)
         {
             if (*(begin + array[i]) < 0) std::cout << i;
         }
         stop = std::chrono::system_clock::now();
-        avg += std::chrono::duration_cast<std::chrono::microseconds>
+        avg += std::chrono::duration_cast<std::chrono::milliseconds>
         (stop-start).count();
     }
     avg /= count;
@@ -97,8 +97,8 @@ void StartLoop(double size, int count, int type)
     srand(time(0));
     int buf_len = static_cast<int>(MB * size / 4);
     int* buf = new int[buf_len];
-    for (int i = 0; i < buf_len; i++) buf[i] = rand_r(&seed);
-    for (int i = 0; i < buf_len; i++) {
+    for (int i = 0; i < buf_len; ++i) buf[i] = rand_r(&seed);
+    for (int i = 0; i < buf_len; ++i) {
         buf[i] = buf[i];
     }
     __uint64_t avg = 0;
@@ -118,7 +118,7 @@ void StartLoop(double size, int count, int type)
     }
     std::cout << "cache size : " << size << '\n';
     std::cout << "cycles : " << count << '\n';
-    std::cout << "AVG time in microsecconds: " << avg << '\n';
+    std::cout << "AVG time in millisecconds: " << avg << '\n';
     delete [] buf;
 }
 
@@ -129,7 +129,7 @@ int main() {
     std :: cout << "Введите количество уровней кэша ";
     std :: cin >> i;
     double *cache_size = new double[i+2];
-    for (int k=1; k <= i; k++){
+    for (int k=1; k <= i; ++k){
         std :: cout <<"№ " << k << "размер уровня равен = ";
         std :: cin >> cache_size[k];
     }
